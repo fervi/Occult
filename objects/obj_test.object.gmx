@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>tutorial_en();&#13;
+pos=0&#13;
+asc=1&#13;
+alpha=0&#13;
+proportion_x=(window_get_width() / 1920)&#13;
+proportion_y=(window_get_height() / 864)&#13;
+global.animation=0;&#13;
+global.windowmaker_return=0;&#13;
+global.windowmaker_card="";&#13;
+global.windowmaker_lock=0;&#13;
+&#13;
+//sc_windowmaker("Book", "What would you like to know?", c_black, "Basics", "Rules", "", "", "", "book");*/&#13;
+&#13;
+//scr_windowmaker("Book", "What would you like to know?", c_black, "Basics", "Rules", "Heroes", "Exit", "", "book");</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(asc=1)&#13;
+{&#13;
+&#13;
+if(alpha&lt;1)&#13;
+{&#13;
+alpha=alpha+0.1&#13;
+&#13;
+}&#13;
+&#13;
+}&#13;
+&#13;
+if(asc=0 &amp;&amp; alpha&lt;=0)&#13;
+{&#13;
+pos=pos+1;&#13;
+asc=1;&#13;
+&#13;
+}&#13;
+&#13;
+if(asc=0)&#13;
+{&#13;
+&#13;
+if(alpha&gt;0)&#13;
+{&#13;
+alpha=alpha-0.1&#13;
+}&#13;
+&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.windowmaker_lock=0 &amp;&amp; global.windowmaker_return&gt;0 &amp;&amp; global.windowmaker_card="book")&#13;
+{&#13;
+game_end();&#13;
+}&#13;
+&#13;
+draw_background_ext(bg_menu, display_get_width(), display_get_height(), global.screen_proportion_width, global.screen_proportion_height, 180, c_white, 1);&#13;
+&#13;
+actionmaker_tutorial();&#13;
+&#13;
+draw_background_ext(bg_leftside, 0, window_get_height(), window_get_height()*0.2 / background_get_width(bg_leftside), window_get_width() / background_get_height(bg_leftside), 90, c_white, 1);&#13;
+draw_set_alpha(alpha);&#13;
+draw_text_outline_ext(window_get_width()*0.021, window_get_height()*0.82, visual_novel_text[pos], c_white, c_maroon, string_height("A")+5, window_get_width()*0.95);&#13;
+draw_set_alpha(1);</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.1</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.1</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.1</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.2</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

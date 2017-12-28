@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Narysuj karte
+
+automatic=0
+
+player_card = global.player;
+if(player_card=1)
+{ // Czy karta należy do gracza?
+//cid = global.player1_deck[|global.i];
+cid = ds_list_find_value(global.player1_deck, global.i);
+//card_sprite = asset_get_index("spr_card"+string(ds_list_find_value(global.player1_deck, global.i)));
+
+card_sprite = "spr_card"+string(ds_list_find_value(global.player1_deck, global.i));
+if ds_map_exists(global.the_sprite, card_sprite)
+{
+    spr_id = ds_map_find_value(global.the_sprite, card_sprite);
+    sprite_index = spr_id;
+    }
+else
+    spr_id = -1; // or some other default value
+    
+y=window_get_height()+10
+
+}
+else
+{ // Czy do komputera?
+image_yscale = -1;
+//cid = global.player2_deck[|global.i];
+cid = ds_list_find_value(global.player2_deck, global.i)
+sprite_index = spr_cover;
+y=0;
+}
+
+
+
+cardproportion = ((point_distance(window_get_width()*0.25, 0, window_get_width(), 0)/7) / 354);
+image_xscale = cardproportion;
+image_yscale = cardproportion;
+
+if((array_length_1d(global.text)-1) &gt;= cid )
+{
+cardtext = global.text[cid];
+}
+else
+{
+cardtext = global.text[0];
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Znajdz text</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Dodaj do bazy danych
+
+if(player_card=1)
+{
+ds_list_add(global.player1_hand,id);
+}
+else
+{
+ds_list_add(global.player2_hand,id);
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Usun karte z listy decku
+
+if(player_card=1)
+{
+ds_list_delete(global.player1_deck, global.i);
+}
+else
+{
+ds_list_delete(global.player2_deck, global.i);
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Wyroznij karte po najechaniu&#13;
+&#13;
+if(global.animation=0)&#13;
+{&#13;
+if place_meeting(x,y,obj_mouse)&#13;
+{&#13;
+&#13;
+if(player_card=1)&#13;
+{&#13;
+global.cardtext = cardtext;&#13;
+global.graphics = sprite_index;&#13;
+y=window_get_height()+1-(image_yscale*sprite_get_height(sprite_index))/2;&#13;
+&#13;
+&#13;
+}&#13;
+else&#13;
+{&#13;
+global.graphics = spr_cover;&#13;
+y=(image_yscale*sprite_get_height(sprite_index))/2;&#13;
+}&#13;
+&#13;
+&#13;
+}&#13;
+else&#13;
+{&#13;
+&#13;
+if(player_card=1) {&#13;
+y=window_get_height(); }&#13;
+else { y=0; }&#13;
+&#13;
+&#13;
+}&#13;
+&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string/>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event ename="obj_mouse" eventtype="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>obj_cardglow.x=x&#13;
+obj_cardglow.y=y&#13;
+obj_cardglow.visible=1</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event ename="obj_graveyard" eventtype="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Animacja i aktywacja
+obj_graveyard.cardtext=cardtext;
+
+if(global.animation=1 &amp;&amp; global.activation=1)
+{
+
+speed=0;
+
+if((array_length_1d(global.cardscr) - 1) &gt;= cid)
+{
+if(global.player_health[1]&gt;0 || global.player_health[2]&gt;0)
+{
+
+global.player_health[global.player]=global.player_health[global.player]-global.points[cid];
+global.player_hit[global.player]=-1*(global.points[cid]);
+global.text_alpha[global.player]=1;
+
+
+if(script_execute(scr_cursed)!=0)
+{
+if(global.player_stats_str[global.player] &gt;= global.card_str[cid] &amp;&amp; global.player_stats_dex[global.player] &gt;= global.card_dex[cid])
+{
+script_execute(global.cardscr[cid]);
+
+if(os_browser&gt;-1) {
+}
+else
+{
+effect_create_above(ef_ring, obj_graveyard.x, obj_graveyard.y, 2, c_white);
+}
+
+}
+}
+}
+global.bot_endturn=1;
+}
+else
+{
+show_message(cid);
+}
+
+
+
+instance_destroy();
+global.animation=0;
+global.activation=0;
+
+//var card_sprite = asset_get_index("spr_card"+string(cid));
+
+var card_sprite = "spr_card"+string(cid);
+if ds_map_exists(global.the_sprite, card_sprite)
+{
+    spr_id = ds_map_find_value(global.the_sprite, card_sprite);
+    obj_graveyard.sprite_index = spr_id;
+    }
+else
+    spr_id = -1; // or some other default value
+
+
+/*if(sprite_exists(card_sprite)){
+obj_graveyard.sprite_index = card_sprite;
+}
+else
+{
+obj_graveyard.sprite_index = spr_card0;
+}*/
+
+
+
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="7" eventtype="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Efekt
+if(os_browser=-1) {
+
+if(player_card=1) {
+if(global.cardtype[cid]=1)
+{
+effect_create_above(ef_ring, x, y, 2, c_green);
+}
+else if(global.cardtype[cid]=2)
+{
+effect_create_above(ef_ring, x, y, 2, c_blue);
+}
+else if(global.cardtype[cid]=3)
+{
+effect_create_above(ef_ring, x, y, 2, c_yellow);
+}
+}
+}
+scr_card_activate();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

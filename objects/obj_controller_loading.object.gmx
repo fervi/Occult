@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm[0]=room_speed*5
+
+prop = round(display_get_height()*0.5)/sprite_get_height(spr_hero_witch);
+posx = round(sprite_get_width(spr_hero_witch)*prop)/2
+posy = (round(sprite_get_height(spr_hero_witch)*prop)/2)+10
+alpha = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto(room_game);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(alpha&lt;1)
+{
+alpha=alpha+0.01
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw bg, graps, texts
+
+draw_background_ext(bg_menu, display_get_width(), display_get_height(), global.screen_proportion_width, global.screen_proportion_height, 180, c_white, 1);
+
+draw_sprite_ext(global.herosprite[1], 0, posx+10, posy, prop, prop, 0, c_white, alpha);
+draw_sprite_ext(global.herosprite[2], 0, (window_get_width()-posx)-10, posy, prop, prop, 0, c_white, alpha);
+
+// Text
+draw_set_alpha(alpha);
+draw_text((posx+10)-(string_width(global.player_name[1])/2), posy*2.1-(string_height(global.player_name[1])/2), global.player_name[1] + "#STR: " + string(global.player_stats_str_def[1]) + "#DEX: " + string(global.player_stats_dex_def[1]));
+draw_text(((window_get_width()-posx)-10)-(string_width(global.player_name[2])/2), posy*2.1-(string_height(global.player_name[2])/2), global.player_name[2] + "#STR: " + string(global.player_stats_str_def[2]) + "#DEX: " + string(global.player_stats_dex_def[2]));
+draw_set_font(font_versus);
+draw_text((window_get_width()*0.5)-(string_width("VERSUS")/2), posy*2.1-(string_height("VERSUS")/2), "VERSUS");
+draw_set_font(font_droid);
+draw_set_alpha(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

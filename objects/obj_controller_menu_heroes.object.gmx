@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(0,0,obj_cardglow);&#13;
+global.heroname = "";&#13;
+global.strstats=0;&#13;
+global.dexstats=0;&#13;
+global.show_stats = 0;&#13;
+global.hero_i=0&#13;
+global.set_player=1&#13;
+proporcje=floor(display_get_height()*0.3)/sprite_get_height(spr_hero_conjurer)&#13;
+&#13;
+instance_create(window_get_width()*0.5,window_get_height()*0.5, obj_hero);&#13;
+global.hero_i=1&#13;
+instance_create(window_get_width()*0.5,window_get_height()*0.17, obj_hero);&#13;
+global.hero_i=2&#13;
+instance_create(window_get_width()*0.5,window_get_height()*0.83, obj_hero);&#13;
+global.hero_i=3&#13;
+instance_create(window_get_width()*0.5 - ((sprite_get_width(spr_hero_conjurer)*proporcje)/2) - ((sprite_get_width(spr_hero_conjurer)*proporcje)) ,window_get_height()*0.5, obj_hero);&#13;
+global.hero_i=4&#13;
+instance_create(window_get_width()*0.5 - ((sprite_get_width(spr_hero_conjurer)*proporcje)/2) - ((sprite_get_width(spr_hero_conjurer)*proporcje)) ,window_get_height()*0.17, obj_hero);&#13;
+global.hero_i=5&#13;
+instance_create(window_get_width()*0.5 + ((sprite_get_width(spr_hero_conjurer)*proporcje)/2) + ((sprite_get_width(spr_hero_conjurer)*proporcje)) ,window_get_height()*0.5, obj_hero);&#13;
+global.hero_i=6&#13;
+instance_create(window_get_width()*0.5 - ((sprite_get_width(spr_hero_conjurer)*proporcje)/2) - ((sprite_get_width(spr_hero_conjurer)*proporcje)) ,window_get_height()*0.83, obj_hero);&#13;
+global.hero_i=7&#13;
+instance_create(window_get_width()*0.5 + ((sprite_get_width(spr_hero_conjurer)*proporcje)/2) + ((sprite_get_width(spr_hero_conjurer)*proporcje)) ,window_get_height()*0.17, obj_hero);&#13;
+global.hero_i=8&#13;
+instance_create(window_get_width()*0.5 + ((sprite_get_width(spr_hero_conjurer)*proporcje)/2) + ((sprite_get_width(spr_hero_conjurer)*proporcje)) ,window_get_height()*0.83, obj_hero);</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Narysuj tlo&#13;
+&#13;
+draw_background_ext(bg_menu, display_get_width(), display_get_height(), global.screen_proportion_width, global.screen_proportion_height, 180, c_white, 1);&#13;
+draw_background_ext(bg_menu, 0, 0, global.screen_proportion_width, global.screen_proportion_height, 0, c_white, global.timer);&#13;
+&#13;
+if(global.timer&lt;=0)&#13;
+{&#13;
+global.schodzenie=0&#13;
+}&#13;
+else if(global.timer&gt;=1)&#13;
+{&#13;
+global.schodzenie=1&#13;
+}&#13;
+&#13;
+&#13;
+if(global.schodzenie=1)&#13;
+{&#13;
+global.timer=global.timer-0.01&#13;
+}&#13;
+else&#13;
+{&#13;
+global.timer=global.timer+0.01&#13;
+}&#13;
+&#13;
+if(global.show_stats=1)&#13;
+{&#13;
+draw_text_outline_ext(10, 10, global.heroname + "#Str:" + string(global.strstats) + "#Dex:" + string(global.dexstats), c_white, c_black, string_height("A")+20, window_get_width());&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>-1</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Variables&#13;
+&#13;
+window_x1=window_get_width()*0.3;&#13;
+window_y1=window_get_height()*0.35;&#13;
+window_x2=window_get_width()*0.7;&#13;
+window_y2=window_get_height()*0.65;&#13;
+window_titlebar_sep=0.03&#13;
+window_button_sep=0.05&#13;
+i=global.windowmaker_i;&#13;
+separation = floor(point_distance(window_x1, 0, window_x2, 0)/i);&#13;
+global.animation=1;</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Set Font
+
+//draw_set_font(font_windowmaker);</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Button React&#13;
+&#13;
+if(mouse_check_button_released(mb_left))&#13;
+{&#13;
+for (var j = 0; j &lt;= i-1; j += 1)&#13;
+{&#13;
+if((window_x1+(j*separation) &lt; mouse_x &amp;&amp; window_x1+((j+1)*separation) &gt; mouse_x) &amp;&amp; (window_y2-(window_get_height()*window_button_sep) &lt; mouse_y &amp;&amp; mouse_y &lt; window_y2))&#13;
+{&#13;
+global.windowmaker_return=j+1;&#13;
+global.windowmaker_lock=0;&#13;
+global.animation=0;&#13;
+instance_destroy();&#13;
+}&#13;
+}&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Window&#13;
+&#13;
+// Generate Window&#13;
+draw_rectangle_color(window_x1, window_y1, window_x2, window_y2, global.windowmaker_windowcolor, global.windowmaker_windowcolor, global.windowmaker_windowcolor, global.windowmaker_windowcolor, false);&#13;
+draw_rectangle(window_x1, window_y1, window_x2, window_y2, true);&#13;
+&#13;
+//Generate titlebar&#13;
+draw_text(window_x1, window_y1, global.windowmaker_titlebar);&#13;
+draw_line(window_x1, window_y1+window_get_height()*window_titlebar_sep, window_x2, window_y1+window_get_height()*window_titlebar_sep);&#13;
+&#13;
+//Draw Text&#13;
+draw_text_ext(window_x1, window_y1+(window_get_height()*window_titlebar_sep), global.windowmaker_message, string_height("A")+10, window_x2-window_x1);&#13;
+&#13;
+// Generate buttons&#13;
+draw_line(window_x1, window_y2-window_get_height()*window_button_sep, window_x2, window_y2-window_get_height()*window_button_sep);&#13;
+&#13;
+for (var j = 0; j &lt;= i-1; j += 1)&#13;
+{&#13;
+draw_line(window_x1+(j*separation), window_y2, window_x1+(j*separation), window_y2-(window_get_height()*window_button_sep));&#13;
+draw_text(window_x1+(j*separation)+5, window_y2-(window_get_height()*window_button_sep), global.windowmaker_buttonname[j]);&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<assets>
+  <Configs name="configs">
+    <Config>Configs\Default</Config>
+    <Config>Configs\Main</Config>
+  </Configs>
+  <sprites name="sprites">
+    <sprites name="cards_magic">
+      <sprite>sprites\spr_card11</sprite>
+      <sprite>sprites\spr_card2</sprite>
+      <sprite>sprites\spr_card20</sprite>
+      <sprite>sprites\spr_card26</sprite>
+      <sprite>sprites\spr_card29</sprite>
+      <sprite>sprites\spr_card3</sprite>
+      <sprite>sprites\spr_card31</sprite>
+      <sprite>sprites\spr_card32</sprite>
+      <sprite>sprites\spr_card33</sprite>
+      <sprite>sprites\spr_card34</sprite>
+      <sprite>sprites\spr_card35</sprite>
+      <sprite>sprites\spr_card36</sprite>
+      <sprite>sprites\spr_card37</sprite>
+      <sprite>sprites\spr_card38</sprite>
+      <sprite>sprites\spr_card39</sprite>
+      <sprite>sprites\spr_card4</sprite>
+      <sprite>sprites\spr_card40</sprite>
+      <sprite>sprites\spr_card48</sprite>
+      <sprite>sprites\spr_card5</sprite>
+      <sprite>sprites\spr_card58</sprite>
+      <sprite>sprites\spr_card6</sprite>
+      <sprite>sprites\spr_card65</sprite>
+      <sprite>sprites\spr_card67</sprite>
+      <sprite>sprites\spr_card68</sprite>
+      <sprite>sprites\spr_card69</sprite>
+      <sprite>sprites\spr_card70</sprite>
+      <sprite>sprites\spr_card72</sprite>
+      <sprite>sprites\spr_card73</sprite>
+      <sprite>sprites\spr_card74</sprite>
+      <sprite>sprites\spr_card76</sprite>
+    </sprites>
+    <sprites name="cards_summon">
+      <sprite>sprites\spr_card10</sprite>
+      <sprite>sprites\spr_card12</sprite>
+      <sprite>sprites\spr_card16</sprite>
+      <sprite>sprites\spr_card17</sprite>
+      <sprite>sprites\spr_card23</sprite>
+      <sprite>sprites\spr_card25</sprite>
+      <sprite>sprites\spr_card28</sprite>
+      <sprite>sprites\spr_card7</sprite>
+      <sprite>sprites\spr_card8</sprite>
+      <sprite>sprites\spr_card1</sprite>
+      <sprite>sprites\spr_card43</sprite>
+      <sprite>sprites\spr_card44</sprite>
+      <sprite>sprites\spr_card45</sprite>
+      <sprite>sprites\spr_card46</sprite>
+      <sprite>sprites\spr_card47</sprite>
+      <sprite>sprites\spr_card59</sprite>
+      <sprite>sprites\spr_card60</sprite>
+      <sprite>sprites\spr_card61</sprite>
+      <sprite>sprites\spr_card62</sprite>
+      <sprite>sprites\spr_card63</sprite>
+      <sprite>sprites\spr_card64</sprite>
+      <sprite>sprites\spr_card66</sprite>
+      <sprite>sprites\spr_card71</sprite>
+      <sprite>sprites\spr_card75</sprite>
+    </sprites>
+    <sprites name="cards_weapon">
+      <sprite>sprites\spr_card13</sprite>
+      <sprite>sprites\spr_card14</sprite>
+      <sprite>sprites\spr_card15</sprite>
+      <sprite>sprites\spr_card18</sprite>
+      <sprite>sprites\spr_card19</sprite>
+      <sprite>sprites\spr_card21</sprite>
+      <sprite>sprites\spr_card22</sprite>
+      <sprite>sprites\spr_card24</sprite>
+      <sprite>sprites\spr_card27</sprite>
+      <sprite>sprites\spr_card30</sprite>
+      <sprite>sprites\spr_card41</sprite>
+      <sprite>sprites\spr_card42</sprite>
+      <sprite>sprites\spr_card49</sprite>
+      <sprite>sprites\spr_card50</sprite>
+      <sprite>sprites\spr_card51</sprite>
+      <sprite>sprites\spr_card52</sprite>
+      <sprite>sprites\spr_card53</sprite>
+      <sprite>sprites\spr_card54</sprite>
+      <sprite>sprites\spr_card55</sprite>
+      <sprite>sprites\spr_card56</sprite>
+      <sprite>sprites\spr_card57</sprite>
+      <sprite>sprites\spr_card9</sprite>
+    </sprites>
+    <sprite>sprites\spr_card0</sprite>
+    <sprite>sprites\spr_cover</sprite>
+    <sprite>sprites\spr_cursor</sprite>
+    <sprites name="status">
+      <sprite>sprites\spr_disarm</sprite>
+      <sprite>sprites\spr_seal</sprite>
+      <sprite>sprites\spr_stun</sprite>
+      <sprite>sprites\spr_no_status</sprite>
+    </sprites>
+    <sprites name="menu">
+      <sprite>sprites\menu_start</sprite>
+      <sprite>sprites\menu_tutorial</sprite>
+      <sprite>sprites\menu_exit</sprite>
+    </sprites>
+    <sprites name="heroes">
+      <sprite>sprites\spr_hero_conjurer</sprite>
+      <sprite>sprites\spr_hero_diviner</sprite>
+      <sprite>sprites\spr_hero_enchantress</sprite>
+      <sprite>sprites\spr_hero_invoker</sprite>
+      <sprite>sprites\spr_hero_shadowmage</sprite>
+      <sprite>sprites\spr_hero_spellsword</sprite>
+      <sprite>sprites\spr_hero_transmuter</sprite>
+      <sprite>sprites\spr_hero_witch</sprite>
+      <sprite>sprites\spr_chooseyourmage</sprite>
+      <sprite>sprites\spr_denied</sprite>
+    </sprites>
+    <sprite>sprites\spr_logo</sprite>
+    <sprites name="tutorial">
+      <sprite>sprites\spr_next</sprite>
+      <sprite>sprites\spr_professor</sprite>
+    </sprites>
+    <sprite>sprites\spr_btn_surrender</sprite>
+    <sprite>sprites\spr_btn_nextturn</sprite>
+    <sprite>sprites\spr_glow</sprite>
+    <sprite>sprites\spr_biglogo</sprite>
+  </sprites>
+  <sounds name="sound">
+    <sounds name="music">
+      <sound>sound\snd_bloodyfight</sound>
+      <sound>sound\snd_boilingblood</sound>
+      <sound>sound\snd_menu</sound>
+      <sound>sound\snd_odyssey</sound>
+    </sounds>
+    <sounds name="sound">
+      <sound>sound\snd_drawcard</sound>
+      <sound>sound\snd_attack</sound>
+      <sound>sound\snd_get_bloodcounter</sound>
+      <sound>sound\snd_heartbeat</sound>
+    </sounds>
+  </sounds>
+  <backgrounds name="background">
+    <background>background\bg_arena</background>
+    <background>background\bg_menu</background>
+    <background>background\bg_leftside</background>
+    <background>background\bg_arena2</background>
+  </backgrounds>
+  <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="cards_magic">
+      <script>scripts\spell_celerato.gml</script>
+      <script>scripts\spell_chaos_gate.gml</script>
+      <script>scripts\spell_curse.gml</script>
+      <script>scripts\spell_divine_justice.gml</script>
+      <script>scripts\spell_doppelganger.gml</script>
+      <script>scripts\spell_draining_energy.gml</script>
+      <script>scripts\spell_earthquake.gml</script>
+      <script>scripts\spell_forgiven_draw.gml</script>
+      <script>scripts\spell_forte.gml</script>
+      <script>scripts\spell_gods_grace.gml</script>
+      <script>scripts\spell_gorgonseye.gml</script>
+      <script>scripts\spell_heal_block.gml</script>
+      <script>scripts\spell_magic_bullet.gml</script>
+      <script>scripts\spell_mana_burst.gml</script>
+      <script>scripts\spell_phoenix_feather.gml</script>
+      <script>scripts\spell_rust_strike.gml</script>
+      <script>scripts\spell_the_pit.gml</script>
+      <script>scripts\spell_the_power_of_the_fallen.gml</script>
+      <script>scripts\spell_transfusion.gml</script>
+      <script>scripts\spell_moonlight.gml</script>
+      <script>scripts\spell_vampire_lust.gml</script>
+      <script>scripts\spell_lucky_star.gml</script>
+      <script>scripts\spell_berserk_rage.gml</script>
+      <script>scripts\spell_implicator.gml</script>
+      <script>scripts\spell_gremlination.gml</script>
+      <script>scripts\spell_gambit.gml</script>
+      <script>scripts\spell_status_breaker.gml</script>
+      <script>scripts\spell_barrier.gml</script>
+      <script>scripts\spell_toxic.gml</script>
+      <script>scripts\spell_enchant.gml</script>
+    </scripts>
+    <scripts name="cards_summon">
+      <script>scripts\summon_arachia.gml</script>
+      <script>scripts\summon_banshee.gml</script>
+      <script>scripts\summon_behemoth.gml</script>
+      <script>scripts\summon_cerberus.gml</script>
+      <script>scripts\summon_chimera.gml</script>
+      <script>scripts\summon_dendroid.gml</script>
+      <script>scripts\summon_dragon.gml</script>
+      <script>scripts\summon_fenrir.gml</script>
+      <script>scripts\summon_gargolye.gml</script>
+      <script>scripts\summon_gremlin.gml</script>
+      <script>scripts\summon_gryphon.gml</script>
+      <script>scripts\summon_hydra.gml</script>
+      <script>scripts\summon_imp.gml</script>
+      <script>scripts\summon_kraken.gml</script>
+      <script>scripts\summon_mammoth.gml</script>
+      <script>scripts\summon_medusa.gml</script>
+      <script>scripts\summon_minotaur.gml</script>
+      <script>scripts\summon_phoenix.gml</script>
+      <script>scripts\summon_roc.gml</script>
+      <script>scripts\summon_succubus.gml</script>
+      <script>scripts\summon_troglodyte.gml</script>
+      <script>scripts\summon_troll.gml</script>
+      <script>scripts\summon_vampire.gml</script>
+      <script>scripts\summon_wyvern.gml</script>
+    </scripts>
+    <scripts name="cards_weapon">
+      <script>scripts\weapon_axe.gml</script>
+      <script>scripts\weapon_battle_gloves.gml</script>
+      <script>scripts\weapon_bow.gml</script>
+      <script>scripts\weapon_chakrams.gml</script>
+      <script>scripts\weapon_daggers.gml</script>
+      <script>scripts\weapon_double_edged_spear.gml</script>
+      <script>scripts\weapon_fightingchain.gml</script>
+      <script>scripts\weapon_greatsword.gml</script>
+      <script>scripts\weapon_hammer.gml</script>
+      <script>scripts\weapon_hell_scizors.gml</script>
+      <script>scripts\weapon_hellbane.gml</script>
+      <script>scripts\weapon_javelin.gml</script>
+      <script>scripts\weapon_katana.gml</script>
+      <script>scripts\weapon_kunai.gml</script>
+      <script>scripts\weapon_lance.gml</script>
+      <script>scripts\weapon_mace.gml</script>
+      <script>scripts\weapon_sabre.gml</script>
+      <script>scripts\weapon_scythe.gml</script>
+      <script>scripts\weapon_short_sword.gml</script>
+      <script>scripts\weapon_shuriken.gml</script>
+      <script>scripts\weapon_staff.gml</script>
+      <script>scripts\weapon_twinsai.gml</script>
+    </scripts>
+    <scripts name="script_cards">
+      <script>scripts\card_list.gml</script>
+      <script>scripts\card_summon_points.gml</script>
+      <script>scripts\card_type.gml</script>
+      <script>scripts\card_strenght.gml</script>
+      <script>scripts\card_dexterity.gml</script>
+      <script>scripts\card_name.gml</script>
+      <script>scripts\card_bloodcounter_cost.gml</script>
+    </scripts>
+    <scripts name="game_scripts">
+      <script>scripts\draw_text_outline_ext.gml</script>
+      <script>scripts\phase_ai.gml</script>
+      <script>scripts\phase_card_draw.gml</script>
+      <script>scripts\phase_end_turn.gml</script>
+      <script>scripts\scr_additional_attack.gml</script>
+      <script>scripts\scr_attack_enemy.gml</script>
+      <script>scripts\scr_attack_yourself.gml</script>
+      <script>scripts\scr_card_activate.gml</script>
+      <script>scripts\scr_cursed.gml</script>
+      <script>scripts\scr_random_attack.gml</script>
+      <script>scripts\scr_random_attack_and_status.gml</script>
+      <script>scripts\scr_random_bloodcounters.gml</script>
+      <script>scripts\scr_random_status.gml</script>
+      <script>scripts\scr_set_global_main_text.gml</script>
+      <script>scripts\scr_windowmaker.gml</script>
+      <script>scripts\actionmaker_tutorial.gml</script>
+      <script>scripts\demo_check.gml</script>
+    </scripts>
+    <scripts name="ai_engine">
+      <script>scripts\ai_engine_randomai.gml</script>
+      <script>scripts\ai_engine_sucklessai.gml</script>
+    </scripts>
+    <scripts name="locale">
+      <scripts name="english">
+        <script>scripts\menu_en.gml</script>
+        <script>scripts\tutorial_en.gml</script>
+        <script>scripts\card_text_en.gml</script>
+        <script>scripts\game_en.gml</script>
+        <script>scripts\game_end_en.gml</script>
+        <script>scripts\heroes_en.gml</script>
+      </scripts>
+      <scripts name="polish">
+        <script>scripts\card_text_pl.gml</script>
+      </scripts>
+    </scripts>
+  </scripts>
+  <shaders name="shaders"/>
+  <fonts name="fonts">
+    <font>fonts\font_droid</font>
+    <font>fonts\font_globaltext</font>
+    <font>fonts\font_versus</font>
+  </fonts>
+  <timelines name="timelines"/>
+  <objects name="objects">
+    <object>objects\obj_controller</object>
+    <object>objects\obj_windowmaker</object>
+    <object>objects\obj_actionmaker</object>
+    <object>objects\obj_fade</object>
+    <objects name="cardgame">
+      <object>objects\obj_card</object>
+      <object>objects\obj_init</object>
+      <object>objects\obj_graveyard</object>
+      <object>objects\obj_mouse</object>
+      <object>objects\obj_cardglow</object>
+    </objects>
+    <objects name="tutorial">
+      <object>objects\obj_actionmaker_tutorial</object>
+      <object>objects\obj_next</object>
+    </objects>
+    <objects name="menu">
+      <object>objects\obj_controller_menu</object>
+      <object>objects\obj_menu_start</object>
+      <object>objects\obj_menu_tutorial</object>
+      <object>objects\obj_menu_exit</object>
+    </objects>
+    <objects name="heroes">
+      <object>objects\obj_controller_menu_heroes</object>
+      <object>objects\obj_hero</object>
+      <object>objects\obj_denied</object>
+    </objects>
+    <object>objects\obj_controller_logo</object>
+    <object>objects\obj_controller_loading</object>
+    <object>objects\obj_btn_nextturn</object>
+    <object>objects\obj_btn_surrender</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room_init</room>
+    <room>rooms\room_tutorial</room>
+    <room>rooms\room_hero</room>
+    <room>rooms\room_game</room>
+    <room>rooms\room_menu</room>
+    <room>rooms\room_logo</room>
+    <room>rooms\room_loading</room>
+  </rooms>
+  <constants number="0"/>
+  <help>
+    <rtf>help.rtf</rtf>
+  </help>
+</assets>

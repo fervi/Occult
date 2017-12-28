@@ -1,0 +1,1554 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>7</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Wywolanie baz danych
+
+card_name();
+game_en();
+card_list();
+card_summon_points();
+card_type();
+card_text_en();
+card_strenght();
+card_dexterity();
+game_end_en();
+
+global.the_sprite = ds_map_create();
+for(var i=0;i&lt;1000;i++)
+    if sprite_exists(i) 
+    {
+        ds_map_add( global.the_sprite, sprite_get_name(i), i);
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>obj_controller</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Zmienne
+global.player_hit[1]=0;
+global.player_hit[2]=0;
+global.text_alpha[1]=0;
+global.text_alpha[2]=0;
+global.text_alpha[3]=1;
+global.main_text="Let the battle begin."
+
+global.windowmaker_return=0;
+global.windowmaker_card="";
+global.windowmaker_lock=0;
+
+global.turn=1;
+randomize();
+global.i=0;
+global.player_health_max[1]=1500;
+global.player_health_max[2]=1500;
+global.player_card_use=1;
+global.player_health[1]=global.player_health_max[1];
+global.player_health[2]=global.player_health_max[2];
+global.player_healthbar[1]=global.player_health[1];
+global.player_healthbar[2]=global.player_health[2];
+global.player_regeneration[1]=25;
+global.player_regeneration[2]=25;
+global.player_poison[1]=0;
+global.player_poison[2]=0;
+global.cardboard = point_distance(window_get_width()*0.25, 0, window_get_width(), 0)
+global.graphics = spr_cover;
+global.player_bot=1;
+global.animation=0;
+global.activation=0;
+global.bot_endturn=1;
+global.mobile_card=0;
+global.cardtext = global.text[0];
+
+//Stats
+global.player_stats_str[1]=global.player_stats_str_def[1];
+global.player_stats_str[2]=global.player_stats_str_def[2];
+global.player_stats_dex[1]=global.player_stats_dex_def[1];
+global.player_stats_dex[2]=global.player_stats_dex_def[2];
+
+
+//Multipliers
+global.player_spell_multiplier[1]=1;
+global.player_spell_multiplier[2]=1;
+global.player_summon_multiplier[1]=1;
+global.player_summon_multiplier[2]=1;
+global.player_weapon_multiplier[1]=1;
+global.player_weapon_multiplier[2]=1;
+
+//Graveyard Counters
+global.player_graveyard_spell[1]=0;
+global.player_graveyard_spell[2]=0;
+global.player_graveyard_summon[1]=0;
+global.player_graveyard_summon[2]=0;
+global.player_graveyard_weapon[1]=0;
+global.player_graveyard_weapon[2]=0;
+
+//Spellcounters
+global.player_spellcounters[1]=0;
+global.player_spellcounters[2]=0;
+
+//Status
+global.player_status_stun[1]=0;
+global.player_status_seal[1]=0;
+global.player_status_disarm[1]=0;
+global.player_status_stun[2]=0;
+global.player_status_seal[2]=0;
+global.player_status_disarm[2]=0;
+global.spr_stat_stun[1]=spr_no_status;
+global.spr_stat_seal[1]=spr_no_status;
+global.spr_stat_disarm[1]=spr_no_status;
+global.spr_stat_stun[2]=spr_no_status;
+global.spr_stat_seal[2]=spr_no_status;
+global.spr_stat_disarm[2]=spr_no_status;
+status_proportion=display_get_height()*0.1/sprite_get_height(spr_no_status);
+// Luck
+global.player_luck[1]=1;
+global.player_luck[2]=1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Zmienne kart&#13;
+&#13;
+global.player_phoenix_feather[1]=0;&#13;
+global.player_phoenix_feather[2]=0;&#13;
+global.player_doppelganger[1]=1;&#13;
+global.player_doppelganger[2]=1;&#13;
+global.player_berserk_rage[1]=0;&#13;
+global.player_berserk_rage[2]=0;&#13;
+global.player_implicator[1]=0;&#13;
+global.player_implicator[2]=0;&#13;
+global.player_gremlination[1]=0;&#13;
+global.player_gremlination[2]=0;&#13;
+global.player_barrier[1]=1;&#13;
+global.player_barrier[2]=1;</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stworz baze danych deck + hand&#13;
+&#13;
+global.player1_deck = ds_list_create();&#13;
+global.player1_hand = ds_list_create();&#13;
+global.player2_deck = ds_list_create();&#13;
+global.player2_hand = ds_list_create();</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stworz deck playera 1&#13;
+&#13;
+if(global.player_name[1]=="Conjurer")&#13;
+{&#13;
+ds_list_add(global.player1_deck,10);&#13;
+ds_list_add(global.player1_deck,11);&#13;
+ds_list_add(global.player1_deck,12);&#13;
+ds_list_add(global.player1_deck,16);&#13;
+ds_list_add(global.player1_deck,17);&#13;
+ds_list_add(global.player1_deck,20);&#13;
+ds_list_add(global.player1_deck,22);&#13;
+ds_list_add(global.player1_deck,23);&#13;
+ds_list_add(global.player1_deck,25);&#13;
+ds_list_add(global.player1_deck,28);&#13;
+ds_list_add(global.player1_deck,32);&#13;
+ds_list_add(global.player1_deck,34);&#13;
+ds_list_add(global.player1_deck,4);&#13;
+ds_list_add(global.player1_deck,43);&#13;
+ds_list_add(global.player1_deck,44);&#13;
+ds_list_add(global.player1_deck,45);&#13;
+ds_list_add(global.player1_deck,48);&#13;
+ds_list_add(global.player1_deck,5);&#13;
+ds_list_add(global.player1_deck,52);&#13;
+ds_list_add(global.player1_deck,53);&#13;
+ds_list_add(global.player1_deck,55);&#13;
+ds_list_add(global.player1_deck,58);&#13;
+ds_list_add(global.player1_deck,59);&#13;
+ds_list_add(global.player1_deck,6);&#13;
+ds_list_add(global.player1_deck,60);&#13;
+ds_list_add(global.player1_deck,61);&#13;
+ds_list_add(global.player1_deck,62);&#13;
+ds_list_add(global.player1_deck,67);&#13;
+ds_list_add(global.player1_deck,70);&#13;
+ds_list_add(global.player1_deck,72);&#13;
+ds_list_add(global.player1_deck,73);&#13;
+ds_list_add(global.player1_deck,8);&#13;
+}&#13;
+else if(global.player_name[1]=="Spellsword")&#13;
+{&#13;
+ds_list_add(global.player1_deck,10);&#13;
+ds_list_add(global.player1_deck,11);&#13;
+ds_list_add(global.player1_deck,12);&#13;
+ds_list_add(global.player1_deck,14);&#13;
+ds_list_add(global.player1_deck,16);&#13;
+ds_list_add(global.player1_deck,20);&#13;
+ds_list_add(global.player1_deck,23);&#13;
+ds_list_add(global.player1_deck,24);&#13;
+ds_list_add(global.player1_deck,26);&#13;
+ds_list_add(global.player1_deck,28);&#13;
+ds_list_add(global.player1_deck,29);&#13;
+ds_list_add(global.player1_deck,30);&#13;
+ds_list_add(global.player1_deck,32);&#13;
+ds_list_add(global.player1_deck,37);&#13;
+ds_list_add(global.player1_deck,38);&#13;
+ds_list_add(global.player1_deck,4);&#13;
+ds_list_add(global.player1_deck,40);&#13;
+ds_list_add(global.player1_deck,41);&#13;
+ds_list_add(global.player1_deck,47);&#13;
+ds_list_add(global.player1_deck,49);&#13;
+ds_list_add(global.player1_deck,49);&#13;
+ds_list_add(global.player1_deck,51);&#13;
+ds_list_add(global.player1_deck,54);&#13;
+ds_list_add(global.player1_deck,54);&#13;
+ds_list_add(global.player1_deck,56);&#13;
+ds_list_add(global.player1_deck,58);&#13;
+ds_list_add(global.player1_deck,6);&#13;
+ds_list_add(global.player1_deck,67);&#13;
+ds_list_add(global.player1_deck,67);&#13;
+ds_list_add(global.player1_deck,70);&#13;
+ds_list_add(global.player1_deck,72);&#13;
+ds_list_add(global.player1_deck,8);&#13;
+}&#13;
+else&#13;
+{&#13;
+ds_list_add(global.player1_deck,1);&#13;
+ds_list_add(global.player1_deck,2);&#13;
+ds_list_add(global.player1_deck,3);&#13;
+ds_list_add(global.player1_deck,4);&#13;
+ds_list_add(global.player1_deck,5);&#13;
+ds_list_add(global.player1_deck,6);&#13;
+ds_list_add(global.player1_deck,7);&#13;
+ds_list_add(global.player1_deck,8);&#13;
+ds_list_add(global.player1_deck,9);&#13;
+ds_list_add(global.player1_deck,10);&#13;
+ds_list_add(global.player1_deck,11);&#13;
+ds_list_add(global.player1_deck,12);&#13;
+ds_list_add(global.player1_deck,13);&#13;
+ds_list_add(global.player1_deck,14);&#13;
+ds_list_add(global.player1_deck,15);&#13;
+ds_list_add(global.player1_deck,16);&#13;
+ds_list_add(global.player1_deck,17);&#13;
+ds_list_add(global.player1_deck,18);&#13;
+ds_list_add(global.player1_deck,19);&#13;
+ds_list_add(global.player1_deck,20);&#13;
+ds_list_add(global.player1_deck,21);&#13;
+ds_list_add(global.player1_deck,22);&#13;
+ds_list_add(global.player1_deck,23);&#13;
+ds_list_add(global.player1_deck,24);&#13;
+ds_list_add(global.player1_deck,25);&#13;
+ds_list_add(global.player1_deck,26);&#13;
+ds_list_add(global.player1_deck,27);&#13;
+ds_list_add(global.player1_deck,28);&#13;
+ds_list_add(global.player1_deck,29);&#13;
+ds_list_add(global.player1_deck,30);&#13;
+ds_list_add(global.player1_deck,31);&#13;
+ds_list_add(global.player1_deck,32);&#13;
+ds_list_add(global.player1_deck,33);&#13;
+ds_list_add(global.player1_deck,34);&#13;
+ds_list_add(global.player1_deck,35);&#13;
+ds_list_add(global.player1_deck,36);&#13;
+ds_list_add(global.player1_deck,37);&#13;
+ds_list_add(global.player1_deck,38);&#13;
+ds_list_add(global.player1_deck,39);&#13;
+ds_list_add(global.player1_deck,40);&#13;
+ds_list_add(global.player1_deck,41);&#13;
+ds_list_add(global.player1_deck,42);&#13;
+ds_list_add(global.player1_deck,43);&#13;
+ds_list_add(global.player1_deck,44);&#13;
+ds_list_add(global.player1_deck,45);&#13;
+ds_list_add(global.player1_deck,46);&#13;
+ds_list_add(global.player1_deck,47);&#13;
+ds_list_add(global.player1_deck,48);&#13;
+ds_list_add(global.player1_deck,49);&#13;
+ds_list_add(global.player1_deck,50);&#13;
+ds_list_add(global.player1_deck,51);&#13;
+ds_list_add(global.player1_deck,52);&#13;
+ds_list_add(global.player1_deck,53);&#13;
+ds_list_add(global.player1_deck,54);&#13;
+ds_list_add(global.player1_deck,55);&#13;
+ds_list_add(global.player1_deck,56);&#13;
+ds_list_add(global.player1_deck,57);&#13;
+ds_list_add(global.player1_deck,58);&#13;
+ds_list_add(global.player1_deck,59);&#13;
+ds_list_add(global.player1_deck,60);&#13;
+ds_list_add(global.player1_deck,61);&#13;
+ds_list_add(global.player1_deck,62);&#13;
+ds_list_add(global.player1_deck,63);&#13;
+ds_list_add(global.player1_deck,64);&#13;
+ds_list_add(global.player1_deck,65);&#13;
+ds_list_add(global.player1_deck,66);&#13;
+ds_list_add(global.player1_deck,67);&#13;
+ds_list_add(global.player1_deck,68);&#13;
+ds_list_add(global.player1_deck,69);&#13;
+ds_list_add(global.player1_deck,70);&#13;
+ds_list_add(global.player1_deck,71);&#13;
+ds_list_add(global.player1_deck,72);&#13;
+ds_list_add(global.player1_deck,73);&#13;
+ds_list_add(global.player1_deck,74);&#13;
+ds_list_add(global.player1_deck,75);&#13;
+ds_list_add(global.player1_deck,76);&#13;
+}&#13;
+&#13;
+for(i=0; i&gt;=irandom_range(1,100); i++)&#13;
+{&#13;
+ds_list_shuffle(global.player1_deck);&#13;
+}&#13;
+numbers = ds_list_size(global.player1_deck);</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stworz reke playera 1&#13;
+&#13;
+global.player=1&#13;
+phase_card_draw();&#13;
+phase_card_draw();&#13;
+phase_card_draw();&#13;
+phase_card_draw();</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stworz deck playera 2&#13;
+&#13;
+if(global.player_name[2]=="Conjurer")&#13;
+{&#13;
+ds_list_add(global.player2_deck,10);&#13;
+ds_list_add(global.player2_deck,11);&#13;
+ds_list_add(global.player2_deck,12);&#13;
+ds_list_add(global.player2_deck,16);&#13;
+ds_list_add(global.player2_deck,17);&#13;
+ds_list_add(global.player2_deck,20);&#13;
+ds_list_add(global.player2_deck,22);&#13;
+ds_list_add(global.player2_deck,23);&#13;
+ds_list_add(global.player2_deck,25);&#13;
+ds_list_add(global.player2_deck,28);&#13;
+ds_list_add(global.player2_deck,32);&#13;
+ds_list_add(global.player2_deck,34);&#13;
+ds_list_add(global.player2_deck,4);&#13;
+ds_list_add(global.player2_deck,43);&#13;
+ds_list_add(global.player2_deck,44);&#13;
+ds_list_add(global.player2_deck,45);&#13;
+ds_list_add(global.player2_deck,48);&#13;
+ds_list_add(global.player2_deck,5);&#13;
+ds_list_add(global.player2_deck,52);&#13;
+ds_list_add(global.player2_deck,53);&#13;
+ds_list_add(global.player2_deck,55);&#13;
+ds_list_add(global.player2_deck,58);&#13;
+ds_list_add(global.player2_deck,59);&#13;
+ds_list_add(global.player2_deck,6);&#13;
+ds_list_add(global.player2_deck,60);&#13;
+ds_list_add(global.player2_deck,61);&#13;
+ds_list_add(global.player2_deck,62);&#13;
+ds_list_add(global.player2_deck,67);&#13;
+ds_list_add(global.player2_deck,70);&#13;
+ds_list_add(global.player2_deck,72);&#13;
+ds_list_add(global.player2_deck,73);&#13;
+ds_list_add(global.player2_deck,8);&#13;
+}&#13;
+else if(global.player_name[2]=="Spellsword")&#13;
+{&#13;
+ds_list_add(global.player2_deck,10);&#13;
+ds_list_add(global.player2_deck,11);&#13;
+ds_list_add(global.player2_deck,12);&#13;
+ds_list_add(global.player2_deck,14);&#13;
+ds_list_add(global.player2_deck,16);&#13;
+ds_list_add(global.player2_deck,20);&#13;
+ds_list_add(global.player2_deck,23);&#13;
+ds_list_add(global.player2_deck,24);&#13;
+ds_list_add(global.player2_deck,26);&#13;
+ds_list_add(global.player2_deck,28);&#13;
+ds_list_add(global.player2_deck,29);&#13;
+ds_list_add(global.player2_deck,30);&#13;
+ds_list_add(global.player2_deck,32);&#13;
+ds_list_add(global.player2_deck,37);&#13;
+ds_list_add(global.player2_deck,38);&#13;
+ds_list_add(global.player2_deck,4);&#13;
+ds_list_add(global.player2_deck,47);&#13;
+ds_list_add(global.player2_deck,49);&#13;
+ds_list_add(global.player2_deck,49);&#13;
+ds_list_add(global.player2_deck,51);&#13;
+ds_list_add(global.player2_deck,54);&#13;
+ds_list_add(global.player2_deck,54);&#13;
+ds_list_add(global.player2_deck,56);&#13;
+ds_list_add(global.player2_deck,58);&#13;
+ds_list_add(global.player2_deck,6);&#13;
+ds_list_add(global.player2_deck,67);&#13;
+ds_list_add(global.player2_deck,67);&#13;
+ds_list_add(global.player2_deck,70);&#13;
+ds_list_add(global.player2_deck,72);&#13;
+ds_list_add(global.player2_deck,8);&#13;
+}&#13;
+else&#13;
+{&#13;
+ds_list_add(global.player2_deck,1);&#13;
+ds_list_add(global.player2_deck,2);&#13;
+ds_list_add(global.player2_deck,3);&#13;
+ds_list_add(global.player2_deck,4);&#13;
+ds_list_add(global.player2_deck,5);&#13;
+ds_list_add(global.player2_deck,6);&#13;
+ds_list_add(global.player2_deck,7);&#13;
+ds_list_add(global.player2_deck,8);&#13;
+ds_list_add(global.player2_deck,9);&#13;
+ds_list_add(global.player2_deck,10);&#13;
+ds_list_add(global.player2_deck,11);&#13;
+ds_list_add(global.player2_deck,12);&#13;
+ds_list_add(global.player2_deck,13);&#13;
+ds_list_add(global.player2_deck,14);&#13;
+ds_list_add(global.player2_deck,15);&#13;
+ds_list_add(global.player2_deck,16);&#13;
+ds_list_add(global.player2_deck,17);&#13;
+ds_list_add(global.player2_deck,18);&#13;
+ds_list_add(global.player2_deck,19);&#13;
+ds_list_add(global.player2_deck,20);&#13;
+ds_list_add(global.player2_deck,21);&#13;
+ds_list_add(global.player2_deck,22);&#13;
+ds_list_add(global.player2_deck,23);&#13;
+ds_list_add(global.player2_deck,24);&#13;
+ds_list_add(global.player2_deck,25);&#13;
+ds_list_add(global.player2_deck,26);&#13;
+ds_list_add(global.player2_deck,27);&#13;
+ds_list_add(global.player2_deck,28);&#13;
+ds_list_add(global.player2_deck,29);&#13;
+ds_list_add(global.player2_deck,30);&#13;
+ds_list_add(global.player2_deck,31);&#13;
+ds_list_add(global.player2_deck,32);&#13;
+ds_list_add(global.player2_deck,33);&#13;
+ds_list_add(global.player2_deck,34);&#13;
+ds_list_add(global.player2_deck,35);&#13;
+ds_list_add(global.player2_deck,36);&#13;
+ds_list_add(global.player2_deck,37);&#13;
+ds_list_add(global.player2_deck,38);&#13;
+ds_list_add(global.player2_deck,39);&#13;
+ds_list_add(global.player2_deck,40);&#13;
+ds_list_add(global.player2_deck,41);&#13;
+ds_list_add(global.player2_deck,42);&#13;
+ds_list_add(global.player2_deck,43);&#13;
+ds_list_add(global.player2_deck,44);&#13;
+ds_list_add(global.player2_deck,45);&#13;
+ds_list_add(global.player2_deck,46);&#13;
+ds_list_add(global.player2_deck,47);&#13;
+ds_list_add(global.player2_deck,48);&#13;
+ds_list_add(global.player2_deck,49);&#13;
+ds_list_add(global.player2_deck,50);&#13;
+ds_list_add(global.player2_deck,51);&#13;
+ds_list_add(global.player2_deck,52);&#13;
+ds_list_add(global.player2_deck,53);&#13;
+ds_list_add(global.player2_deck,54);&#13;
+ds_list_add(global.player2_deck,55);&#13;
+ds_list_add(global.player2_deck,56);&#13;
+ds_list_add(global.player2_deck,57);&#13;
+ds_list_add(global.player2_deck,58);&#13;
+ds_list_add(global.player2_deck,59);&#13;
+ds_list_add(global.player2_deck,60);&#13;
+ds_list_add(global.player2_deck,61);&#13;
+ds_list_add(global.player2_deck,62);&#13;
+ds_list_add(global.player2_deck,63);&#13;
+ds_list_add(global.player2_deck,64);&#13;
+ds_list_add(global.player2_deck,65);&#13;
+ds_list_add(global.player2_deck,66);&#13;
+ds_list_add(global.player2_deck,67);&#13;
+ds_list_add(global.player2_deck,68);&#13;
+ds_list_add(global.player2_deck,69);&#13;
+ds_list_add(global.player2_deck,70);&#13;
+ds_list_add(global.player2_deck,71);&#13;
+ds_list_add(global.player2_deck,72);&#13;
+ds_list_add(global.player2_deck,73);&#13;
+ds_list_add(global.player2_deck,74);&#13;
+ds_list_add(global.player2_deck,75);&#13;
+ds_list_add(global.player2_deck,76);&#13;
+}&#13;
+&#13;
+for(i=0; i&gt;=irandom_range(1,100); i++)&#13;
+{&#13;
+ds_list_shuffle(global.player2_deck);&#13;
+}&#13;
+&#13;
+numbers = ds_list_size(global.player2_deck);</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stworze reke playera 2
+
+global.player=2
+phase_card_draw();
+phase_card_draw();
+phase_card_draw();
+phase_card_draw();</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Rzut moneta o "kto pierwszy"
+
+var var_random = random_range(0, 1);
+
+
+if(var_random&lt;=0.5)
+{
+global.player=1;
+global.player_enemy=2;
+global.db_hand=global.player1_hand;
+global.command = 0;
+}
+else
+{
+global.player=2;
+global.player_enemy=1;
+global.db_hand=global.player2_hand;
+global.command = 0;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Zmienne pozycyjne
+
+global.half_healthbar_height = floor(window_get_height()*0.225) - (string_height("1000")/2)
+cardproportion = ((point_distance(window_get_width()*0.25, 0, window_get_width(), 0)/7) / 354);
+virt_y=(sprite_get_height(spr_card0)*cardproportion)/2
+global.text_alpha[3]=0;
+global.win_type=0;
+
+instance_create(0,0,obj_cardglow);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Start Music
+
+audio_stop_all();
+var var_random = irandom_range(0, 2);
+
+if(var_random=0)
+{
+audio_play_sound(snd_bloodyfight, 10, 1);
+}
+else if(var_random=1)
+{
+audio_play_sound(snd_boilingblood, 10, 1);
+}
+else if(var_random=2)
+{
+audio_play_sound(snd_odyssey, 10, 1);
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="11" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.player_healthbar[1]&gt;global.player_health[1])
+{
+global.player_healthbar[1]=global.player_healthbar[1]-1;
+}
+
+if(global.player_healthbar[1]&lt;global.player_health[1])
+{
+global.player_healthbar[1]=global.player_healthbar[1]+1;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="10" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.player_healthbar[2]&gt;global.player_health[2])
+{
+global.player_healthbar[2]=global.player_healthbar[2]-1;
+}
+
+if(global.player_healthbar[2]&lt;global.player_health[2])
+{
+global.player_healthbar[2]=global.player_healthbar[2]+1;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Ustawianie kart - player 1&#13;
+&#13;
+if(global.animation=0)&#13;
+{&#13;
+cardsinhand = ds_list_size(global.player1_hand);&#13;
+algoritm = global.cardboard / cardsinhand;&#13;
+&#13;
+for(i=0; i&lt;=cardsinhand; i++)&#13;
+{&#13;
+variable = ds_list_find_value(global.player1_hand, i);&#13;
+//variable = (global.player1_hand[|i]);&#13;
+variable.x = window_get_width()*0.31 + (algoritm * i);&#13;
+}&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Ustawianie kart - player 2
+
+if(global.animation=0)
+{
+cardsinhand = ds_list_size(global.player2_hand);
+algoritm = global.cardboard / cardsinhand;
+
+for(i=0; i&lt;=cardsinhand; i++)
+{
+//variable = (global.player2_hand[|i]);
+variable = ds_list_find_value(global.player2_hand, i);
+variable.x = window_get_width()*0.31 + (algoritm * i);
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Blokuj over / under HP
+
+if(global.player_health[1]&gt;global.player_health_max[1])
+{
+global.player_health[1]=global.player_health_max[1];
+}
+
+if(global.player_health[2]&gt;global.player_health_max[2])
+{
+global.player_health[2]=global.player_health_max[2];
+}
+
+if(global.player_health[1]&lt;0)
+{
+global.player_health[1]=0;
+}
+
+if(global.player_health[2]&lt;0)
+{
+global.player_health[2]=0;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Sprawdzanie smierci gracza
+if(global.win_type=0)
+{
+if(((global.player_healthbar[1]&lt;=0) &amp;&amp; (global.player_healthbar[2]&lt;=0)) &amp;&amp; global.animation=0)
+{
+if(os_browser&gt;-1) { show_message(global.str_draw); audio_stop_all(); game_restart(); }
+scr_set_global_main_text(global.str_draw)
+global.win_type=1;
+exit;
+}
+else
+{
+if((global.player_healthbar[1]&lt;=0) &amp;&amp; global.animation=0)
+{
+if (global.player_phoenix_feather[1])=0 {
+if(os_browser&gt;-1) { show_message(global.str_bot_win); audio_stop_all(); game_restart(); }
+scr_set_global_main_text(global.str_bot_win)
+global.win_type=1;
+exit;
+}
+else
+{
+global.player_health[1]=100;
+global.player_phoenix_feather[1]=0;
+}
+}
+if((global.player_healthbar[2]&lt;=0) &amp;&amp; global.animation=0)
+{
+if (global.player_phoenix_feather[2])=0 {
+if(os_browser&gt;-1) { show_message(global.str_player_win); audio_stop_all(); game_restart(); }
+scr_set_global_main_text(global.str_player_win)
+global.win_type=1;
+exit;
+}
+else
+{
+global.player_health[2]=100;
+global.player_phoenix_feather[2]=0;
+}
+
+
+}
+}
+
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Health-bar Controller
+
+if(global.player_healthbar[1]!=global.player_health[1])
+{
+alarm[11]=1;
+global.animation=1;
+}
+
+if(global.player_healthbar[2]!=global.player_health[2])
+{
+alarm[10]=1;
+global.animation=1;
+}
+
+if((global.player_healthbar[1]=global.player_health[1]) &amp;&amp; (global.player_healthbar[2]=global.player_health[2]) &amp;&amp; global.activation=0 &amp;&amp; global.windowmaker_lock=0)
+{
+global.animation=0;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// AI
+
+if((global.player=2 &amp;&amp; global.player_bot=1) &amp;&amp; global.win_type=0)
+{
+
+if(ds_list_size(global.player2_hand)&gt;0)
+{
+card_ai = ds_list_find_value(global.player2_hand, phase_ai());
+with(card_ai) 
+{
+scr_card_activate();
+}
+}
+
+if(global.animation=0 &amp;&amp; global.bot_endturn=1)
+{
+global.bot_endturn=0;
+phase_end_turn();
+}
+
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Status
+
+// Player 1
+// Stun
+// Seal
+// Disarm
+
+if(global.player_status_stun[1]=1)
+{
+global.spr_stat_stun[1]=spr_stun;
+}
+
+if(global.player_status_seal[1]=1)
+{
+global.spr_stat_seal[1]=spr_seal;
+}
+
+if(global.player_status_disarm[1]=1)
+{
+global.spr_stat_disarm[1]=spr_disarm;
+}
+
+
+// Player 2
+
+if(global.player_status_stun[2]=1)
+{
+global.spr_stat_stun[2]=spr_stun;
+}
+
+if(global.player_status_seal[2]=1)
+{
+global.spr_stat_seal[2]=spr_seal;
+}
+
+if(global.player_status_disarm[2]=1)
+{
+global.spr_stat_disarm[2]=spr_disarm;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Wygaszanie napisow
+
+if(global.text_alpha[1]!=0)
+{
+global.text_alpha[1]=global.text_alpha[1]-0.01;
+}
+
+if(global.text_alpha[2]!=0)
+{
+global.text_alpha[2]=global.text_alpha[2]-0.01;
+}
+
+if(global.text_alpha[3]!=0)
+{
+global.text_alpha[3]=global.text_alpha[3]-0.01;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Windowmaker&#13;
+&#13;
+if(global.windowmaker_lock=0 &amp;&amp; global.windowmaker_return&gt;0 &amp;&amp; global.windowmaker_card="roc")&#13;
+{&#13;
+if(global.windowmaker_return=1)&#13;
+{&#13;
+global.player_spellcounters[global.player]=global.player_spellcounters[global.player]-5;&#13;
+global.player_status_stun[global.player_enemy]=1;&#13;
+}&#13;
+&#13;
+global.windowmaker_return=0;&#13;
+global.windowmaker_card=""&#13;
+}&#13;
+&#13;
+if(global.windowmaker_lock=0 &amp;&amp; global.windowmaker_return&gt;0 &amp;&amp; global.windowmaker_card="battlegloves")&#13;
+{&#13;
+if(global.windowmaker_return=1)&#13;
+{&#13;
+global.player_spellcounters[global.player]=global.player_spellcounters[global.player]-2;&#13;
+global.player_status_seal[global.player_enemy]=1;&#13;
+}&#13;
+&#13;
+global.windowmaker_return=0;&#13;
+global.windowmaker_card=""&#13;
+}&#13;
+&#13;
+if(global.windowmaker_lock=0 &amp;&amp; global.windowmaker_return&gt;0 &amp;&amp; global.windowmaker_card="gargolye")&#13;
+{&#13;
+if(global.windowmaker_return=1)&#13;
+{&#13;
+global.player_spellcounters[global.player]=global.player_spellcounters[global.player]-2;&#13;
+phase_card_draw();&#13;
+}&#13;
+&#13;
+global.windowmaker_return=0;&#13;
+global.windowmaker_card=""&#13;
+}&#13;
+&#13;
+if(global.windowmaker_lock=0 &amp;&amp; global.windowmaker_return&gt;0 &amp;&amp; global.windowmaker_card="behemoth")&#13;
+{&#13;
+if(global.windowmaker_return=1)&#13;
+{&#13;
+global.player_spellcounters[global.player]=global.player_spellcounters[global.player]-3;&#13;
+scr_random_attack(100, 25);&#13;
+}&#13;
+&#13;
+global.windowmaker_return=0;&#13;
+global.windowmaker_card=""&#13;
+}&#13;
+&#13;
+if(global.windowmaker_lock=0 &amp;&amp; global.windowmaker_return&gt;0 &amp;&amp; global.windowmaker_card="surrender")&#13;
+{&#13;
+if(global.windowmaker_return=1)&#13;
+{&#13;
+global.player_health[1]=0;&#13;
+global.player_healthbar[1]=0&#13;
+}&#13;
+global.windowmaker_return=0;&#13;
+global.windowmaker_card=""&#13;
+&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Sprawdzanie Konca Gry
+
+if(global.text_alpha[3]=0 &amp;&amp; global.win_type=2)
+{
+global.rm=room_menu;
+}
+
+if(global.text_alpha[3]=0 &amp;&amp; global.win_type=1)
+{
+global.rm=room_menu;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="3" eventtype="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Zwolnij DS Listy
+
+ds_list_destroy(global.player1_deck);
+ds_list_destroy(global.player1_hand);
+ds_list_destroy(global.player2_deck);
+ds_list_destroy(global.player2_hand);</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Set Font
+
+draw_set_font(font_droid);
+//draw_set_colour(c_white);</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Narysuj tlo&#13;
+&#13;
+draw_background_ext(bg_arena2, window_get_width()*0.25, 0, (window_get_width()*0.75/background_get_width(bg_arena)), (window_get_height()/background_get_height(bg_arena)), 0, c_white, 1);&#13;
+draw_background_ext(bg_arena, window_get_width()*0.25, 0, (window_get_width()*0.75/background_get_width(bg_arena)), (window_get_height()/background_get_height(bg_arena)), 0, c_white, global.timer);&#13;
+&#13;
+if(global.timer&lt;=0)&#13;
+{&#13;
+global.schodzenie=0&#13;
+}&#13;
+else if(global.timer&gt;=1)&#13;
+{&#13;
+global.schodzenie=1&#13;
+}&#13;
+&#13;
+&#13;
+if(global.schodzenie=1)&#13;
+{&#13;
+global.timer=global.timer-0.005&#13;
+}&#13;
+else&#13;
+{&#13;
+global.timer=global.timer+0.005&#13;
+}&#13;
+&#13;
+draw_background_ext(bg_leftside, 0, 0, (window_get_width()*0.25/background_get_width(bg_leftside)), (window_get_height()/background_get_height(bg_leftside)), 0, c_white, 1);</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Narysuj pole gry&#13;
+&#13;
+var spr_big_prop = (window_get_width()*0.20 / sprite_get_width(spr_cover))&#13;
+&#13;
+&#13;
+if(string(GM_version)=="0")&#13;
+{&#13;
+draw_sprite_stretched(global.graphics, 0, ((sprite_get_width(spr_cover)*spr_big_prop)/2)+(window_get_width()*0.005), ((sprite_get_height(spr_cover)*spr_big_prop)/2)-window_get_height()*0.02, window_get_width()*0.21,sprite_get_height(spr_cover)*spr_big_prop);&#13;
+}&#13;
+else&#13;
+{&#13;
+draw_sprite_stretched(global.graphics, 0, window_get_width()*0.02,window_get_height()*0.02, window_get_width()*0.21,sprite_get_height(spr_cover)*spr_big_prop);&#13;
+}&#13;
+&#13;
+&#13;
+draw_text_outline_ext(window_get_width()*0.02, (sprite_get_height(spr_cover)*spr_big_prop)+string_height("a"), global.cardtext, c_white, c_red, 25, window_get_width()*0.21);</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Narysuj Life bars
+
+//var health1 = (global.player_health[1] / global.player_health_max[1]) * 100;
+//var health2 = (global.player_health[2] / global.player_health_max[2]) * 100;
+
+draw_text_outline_ext(window_get_width()*0.26, window_get_height()*0.2 - string_height("X") - 10, global.player_name[1], c_white, c_black, string_height("X"), window_get_width());
+draw_text_outline_ext(window_get_width()*0.74, window_get_height()*0.2 - string_height("X") - 10, global.player_name[2], c_white, c_black, string_height("X"), window_get_width());
+health1 = (global.player_healthbar[1] / global.player_health_max[1]) * 100;
+health2 = (global.player_healthbar[2] / global.player_health_max[2]) * 100;
+draw_healthbar(window_get_width()*0.26, window_get_height()*0.2, window_get_width()*0.55, window_get_height()*0.25, health1, c_black, c_black, c_maroon, 0, true, true)
+draw_healthbar(window_get_width()*0.74, window_get_height()*0.2, window_get_width()*0.99, window_get_height()*0.25, health2, c_black, c_black, c_maroon, 0, true, true)
+draw_set_color(c_white);
+/*draw_text(window_get_width()*0.54, global.half_healthbar_height, "1");
+draw_text(window_get_width()*0.98, global.half_healthbar_height, "2");
+draw_set_colour(c_black);*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Statusy
+
+// Player 1
+
+draw_sprite_ext(global.spr_stat_stun[1], 0, window_get_width()*0.3, window_get_height()*0.3, status_proportion, status_proportion, 0, c_white, 1);
+draw_sprite_ext(global.spr_stat_seal[1], 0, window_get_width()*0.4, window_get_height()*0.3, status_proportion, status_proportion, 0, c_white, 1);
+draw_sprite_ext(global.spr_stat_disarm[1], 0, window_get_width()*0.5, window_get_height()*0.3, status_proportion, status_proportion, 0, c_white, 1);
+
+// Player 2
+draw_sprite_ext(global.spr_stat_stun[2], 0, window_get_width()*0.76, window_get_height()*0.3, status_proportion, status_proportion, 0, c_white, 1);
+draw_sprite_ext(global.spr_stat_seal[2], 0, window_get_width()*0.86, window_get_height()*0.3, status_proportion, status_proportion, 0, c_white, 1);
+draw_sprite_ext(global.spr_stat_disarm[2], 0, window_get_width()*0.96, window_get_height()*0.3, status_proportion, status_proportion, 0, c_white, 1);</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Napisz ile uzytkownik ma STR, DEX i BC
+
+draw_text_outline_ext(window_get_width()*0.3-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion))), "STR: " + string(global.player_stats_str[1]), c_white, c_red, 300, 500); 
+draw_text_outline_ext(window_get_width()*0.3-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion)+(string_height("X")))), "DEX: " + string(global.player_stats_dex[1]), c_white, c_red, 300, 500); 
+draw_text_outline_ext(window_get_width()*0.3-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion)+((string_height("X")*2)))), "Blood Counters: " + string(global.player_spellcounters[1]), c_white, c_red, 300, 500); 
+
+draw_text_outline_ext(window_get_width()*0.76-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion))), "STR: " + string(global.player_stats_str[2]), c_white, c_red, 300, 500); 
+draw_text_outline_ext(window_get_width()*0.76-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion)+(string_height("X")))), "DEX: " + string(global.player_stats_dex[2]), c_white, c_red, 300, 500); 
+draw_text_outline_ext(window_get_width()*0.76-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion)+(string_height("X")*2))), "Blood Counters: " + string(global.player_spellcounters[2]), c_white, c_red, 300, 500); 
+
+if(global.player=1)
+{
+draw_text_outline_ext(window_get_width()*0.3-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion)+(string_height("X")*3))), "Moves left: " + string(global.player_card_use), c_white, c_red, 300, 500); 
+draw_text_outline_ext(window_get_width()*0.76-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion)+(string_height("X")*3))), "Moves left: 0", c_white, c_red, 300, 500); 
+}
+else
+{
+draw_text_outline_ext(window_get_width()*0.3-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion)+(string_height("X")*3))), "Moves left: 0", c_white, c_red, 300, 500); 
+draw_text_outline_ext(window_get_width()*0.76-(sprite_get_width(spr_no_status)*status_proportion/2), ((window_get_height()*0.3)+((sprite_get_height(spr_no_status)*status_proportion)+(string_height("X")*3))), "Moves left: " + string(global.player_card_use), c_white, c_red, 300, 500); 
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Napisz różnice HP
+
+draw_set_alpha(global.text_alpha[1]);
+draw_text(window_get_width()*0.56, global.half_healthbar_height, global.player_hit[1]);
+draw_set_alpha(global.text_alpha[2]);
+draw_text(window_get_width()*0.73-string_width("-999"), global.half_healthbar_height, global.player_hit[2]);
+draw_set_alpha(1);</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Napisz HP na Healthbar
+
+draw_text(window_get_width()*0.27, global.half_healthbar_height, string(global.player_healthbar[1]) + " / " + string(global.player_health_max[1]));
+draw_text(window_get_width()*0.75, global.half_healthbar_height, string(global.player_healthbar[2]) + " / " + string(global.player_health_max[2]));</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Game Status
+draw_set_font(font_globaltext);
+draw_set_alpha(global.text_alpha[3]);
+draw_text_outline_ext(obj_graveyard.x-(string_width(global.main_text)/2), obj_btn_nextturn.y+sprite_get_height(spr_btn_surrender)*cardproportion , global.main_text, c_white, c_maroon, 30, window_get_width());
+draw_set_alpha(1);
+draw_set_font(font_droid);
+//window_get_height()*0.5+virt_y+window_get_height()*0.05
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

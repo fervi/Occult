@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>-1</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Stworzenie postaci&#13;
+&#13;
+global.windowmaker_return=0;&#13;
+global.windowmaker_card="";&#13;
+global.windowmaker_lock=0;&#13;
+&#13;
+// Heroes Name&#13;
+global.player_name[1]="";&#13;
+global.player_name[2]="";&#13;
+heroes_en();&#13;
+proporcje=floor(window_get_height()*0.3)/sprite_get_height(spr_hero_conjurer)&#13;
+image_xscale = proporcje&#13;
+image_yscale = proporcje&#13;
+hero_j=global.hero_i;&#13;
+&#13;
+if(global.hero_i=0)&#13;
+{&#13;
+sprite_index = spr_chooseyourmage&#13;
+}&#13;
+else if(global.hero_i=1)&#13;
+{&#13;
+sprite_index = spr_hero_conjurer&#13;
+}&#13;
+else if(global.hero_i=2)&#13;
+{&#13;
+sprite_index = spr_hero_diviner&#13;
+}&#13;
+else if(global.hero_i=3)&#13;
+{&#13;
+sprite_index = spr_hero_enchantress&#13;
+}&#13;
+else if(global.hero_i=4)&#13;
+{&#13;
+sprite_index = spr_hero_invoker&#13;
+}&#13;
+else if(global.hero_i=5)&#13;
+{&#13;
+sprite_index = spr_hero_shadowmage&#13;
+}&#13;
+else if(global.hero_i=6)&#13;
+{&#13;
+sprite_index = spr_hero_spellsword&#13;
+}&#13;
+else if(global.hero_i=7)&#13;
+{&#13;
+sprite_index = spr_hero_transmuter&#13;
+}&#13;
+else if(global.hero_i=8)&#13;
+{&#13;
+sprite_index = spr_hero_witch&#13;
+}&#13;
+&#13;
+if(global.demo=1)&#13;
+{&#13;
+if(!((global.hero_i==1 or global.hero_i==6) or global.hero_i==0))&#13;
+{&#13;
+//show_message(global.hero_i);&#13;
+instance_create(x, y, obj_denied);&#13;
+}&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="11" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>randomize();&#13;
+var hero_bot = irandom_range(1, 8);&#13;
+global.set_player=2&#13;
+&#13;
+if(global.demo=0)&#13;
+{&#13;
+hero_j=hero_bot&#13;
+if(hero_j=1)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=5;&#13;
+global.player_stats_dex_def[global.set_player]=8;&#13;
+global.herosprite[2] = spr_hero_conjurer&#13;
+}&#13;
+else if(hero_j=2)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=9;&#13;
+global.player_stats_dex_def[global.set_player]=4;&#13;
+global.herosprite[2] = spr_hero_diviner&#13;
+}&#13;
+else if(hero_j=3)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=3;&#13;
+global.player_stats_dex_def[global.set_player]=10;&#13;
+global.herosprite[2] = spr_hero_enchantress&#13;
+}&#13;
+else if(hero_j=4)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=7;&#13;
+global.player_stats_dex_def[global.set_player]=6;&#13;
+global.herosprite[2] = spr_hero_invoker&#13;
+}&#13;
+else if(hero_j=5)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=8;&#13;
+global.player_stats_dex_def[global.set_player]=5;&#13;
+global.herosprite[2] = spr_hero_shadowmage&#13;
+}&#13;
+else if(hero_j=6)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=10;&#13;
+global.player_stats_dex_def[global.set_player]=3;&#13;
+global.herosprite[2] = spr_hero_spellsword&#13;
+}&#13;
+else if(hero_j=7)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=6;&#13;
+global.player_stats_dex_def[global.set_player]=7;&#13;
+global.herosprite[2] = spr_hero_transmuter&#13;
+}&#13;
+else if(hero_j=8)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=4;&#13;
+global.player_stats_dex_def[global.set_player]=9;&#13;
+global.herosprite[2] = spr_hero_witch&#13;
+}&#13;
+}&#13;
+else&#13;
+{&#13;
+&#13;
+if(global.player_name[1] = "Conjurer")&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=10;&#13;
+global.player_stats_dex_def[global.set_player]=3;&#13;
+global.herosprite[2] = spr_hero_spellsword&#13;
+hero_j=6&#13;
+}&#13;
+else&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=5;&#13;
+global.player_stats_dex_def[global.set_player]=8;&#13;
+global.herosprite[2] = spr_hero_conjurer&#13;
+hero_j=1&#13;
+}&#13;
+&#13;
+&#13;
+&#13;
+}&#13;
+&#13;
+global.player_name[2]=heroes[hero_j];&#13;
+&#13;
+room_goto(room_loading);</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Windowmaker&#13;
+&#13;
+/*if(global.windowmaker_lock=0 &amp;&amp; global.windowmaker_return&gt;0 &amp;&amp; global.windowmaker_card="demo")&#13;
+{&#13;
+global.windowmaker_return=0;&#13;
+global.windowmaker_card=""&#13;
+}*/</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event ename="obj_mouse" eventtype="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(hero_j=1)&#13;
+{&#13;
+global.strstats=5;&#13;
+global.dexstats=8;&#13;
+}&#13;
+else if(hero_j=2)&#13;
+{&#13;
+global.strstats=9;&#13;
+global.dexstats=4;&#13;
+}&#13;
+else if(hero_j=3)&#13;
+{&#13;
+global.strstats=3;&#13;
+global.dexstats=10;&#13;
+}&#13;
+else if(hero_j=4)&#13;
+{&#13;
+global.strstats=7;&#13;
+global.dexstats=6;&#13;
+}&#13;
+else if(hero_j=5)&#13;
+{&#13;
+global.strstats=8;&#13;
+global.dexstats=5;&#13;
+}&#13;
+else if(hero_j=6)&#13;
+{&#13;
+global.strstats=10;&#13;
+global.dexstats=3;&#13;
+}&#13;
+else if(hero_j=7)&#13;
+{&#13;
+global.strstats=6;&#13;
+global.dexstats=7;&#13;
+}&#13;
+else if(hero_j=8)&#13;
+{&#13;
+global.strstats=4;&#13;
+global.dexstats=9;&#13;
+}&#13;
+&#13;
+if(hero_j&gt;0)&#13;
+{&#13;
+global.heroname = heroes[hero_j];&#13;
+&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="7" eventtype="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Aktywacja konkretnej postaci&#13;
+&#13;
+if(global.demo=1)&#13;
+{&#13;
+&#13;
+if(hero_j=1)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=5;&#13;
+global.player_stats_dex_def[global.set_player]=8;&#13;
+global.herosprite[1] = spr_hero_conjurer&#13;
+global.player_name[1]=heroes[hero_j];&#13;
+&#13;
+if(global.set_player=1)&#13;
+{&#13;
+alarm[11]=1;&#13;
+}&#13;
+&#13;
+}&#13;
+else if(hero_j=6)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=10;&#13;
+global.player_stats_dex_def[global.set_player]=3;&#13;
+global.herosprite[1] = spr_hero_spellsword&#13;
+global.player_name[1]=heroes[hero_j];&#13;
+&#13;
+if(global.set_player=1)&#13;
+{&#13;
+alarm[11]=1;&#13;
+}&#13;
+&#13;
+}&#13;
+else if(hero_j=0)&#13;
+{&#13;
+}&#13;
+else&#13;
+{&#13;
+show_message("You need full version to play using this character!");&#13;
+surface_reset_target();&#13;
+window_set_fullscreen(1);&#13;
+}&#13;
+&#13;
+&#13;
+&#13;
+}&#13;
+else&#13;
+{&#13;
+if(hero_j=1)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=5;&#13;
+global.player_stats_dex_def[global.set_player]=8;&#13;
+global.herosprite[1] = spr_hero_conjurer&#13;
+}&#13;
+else if(hero_j=2)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=9;&#13;
+global.player_stats_dex_def[global.set_player]=4;&#13;
+global.herosprite[1] = spr_hero_diviner&#13;
+}&#13;
+else if(hero_j=3)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=3;&#13;
+global.player_stats_dex_def[global.set_player]=10;&#13;
+global.herosprite[1] = spr_hero_enchantress&#13;
+}&#13;
+else if(hero_j=4)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=7;&#13;
+global.player_stats_dex_def[global.set_player]=6;&#13;
+global.herosprite[1] = spr_hero_invoker&#13;
+}&#13;
+else if(hero_j=5)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=8;&#13;
+global.player_stats_dex_def[global.set_player]=5;&#13;
+global.herosprite[1] = spr_hero_shadowmage&#13;
+}&#13;
+else if(hero_j=6)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=10;&#13;
+global.player_stats_dex_def[global.set_player]=3;&#13;
+global.herosprite[1] = spr_hero_spellsword&#13;
+}&#13;
+else if(hero_j=7)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=6;&#13;
+global.player_stats_dex_def[global.set_player]=7;&#13;
+global.herosprite[1] = spr_hero_transmuter&#13;
+}&#13;
+else if(hero_j=8)&#13;
+{&#13;
+global.player_stats_str_def[global.set_player]=4;&#13;
+global.player_stats_dex_def[global.set_player]=9;&#13;
+global.herosprite[1] = spr_hero_witch&#13;
+}&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+global.player_name[1]=heroes[hero_j];&#13;
+&#13;
+if(global.set_player=1)&#13;
+{&#13;
+alarm[11]=1;&#13;
+}&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

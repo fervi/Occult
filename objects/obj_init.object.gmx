@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.demo=0;&#13;
+&#13;
+width=display_get_width();&#13;
+height=display_get_height();&#13;
+window_set_size(width, height);&#13;
+room_set_width(room_game, width);&#13;
+room_set_height(room_game, height);&#13;
+room_set_width(room_tutorial, width);&#13;
+room_set_height(room_tutorial, height);&#13;
+room_set_width(room_menu, width);&#13;
+room_set_height(room_menu, height);&#13;
+room_set_width(room_hero, width);&#13;
+room_set_height(room_hero, height);&#13;
+room_set_width(room_logo, width);&#13;
+room_set_height(room_logo, height);&#13;
+room_set_width(room_loading, width);&#13;
+room_set_height(room_loading, height);&#13;
+&#13;
+/*ini_open("config.ini");&#13;
+var musiclevel = ini_read_real("music", "music_volume", 0.5);&#13;
+var soundlevel = ini_read_real("sound", "sound_volume", 0.5);*/&#13;
+soundlevel = 0.5&#13;
+musiclevel = 0.5&#13;
+audio_sound_gain(snd_heartbeat, soundlevel, 0);&#13;
+audio_sound_gain(snd_attack, soundlevel, 0);&#13;
+audio_sound_gain(snd_drawcard, soundlevel, 0);&#13;
+audio_sound_gain(snd_get_bloodcounter, soundlevel, 0);&#13;
+&#13;
+audio_sound_gain(snd_menu, musiclevel, 0);&#13;
+audio_sound_gain(snd_bloodyfight, musiclevel, 0);&#13;
+audio_sound_gain(snd_boilingblood, musiclevel, 0);&#13;
+audio_sound_gain(snd_odyssey, musiclevel, 0);&#13;
+//ini_close();&#13;
+&#13;
+randomize();</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var var_fake=display_get_width()*0.10;
+
+if(window_get_height()+var_fake &gt;= height || window_get_height()+var_fake &lt;= height)
+{
+surface_reset_target();
+window_set_fullscreen(1);
+room_goto(room_logo);
+instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>
