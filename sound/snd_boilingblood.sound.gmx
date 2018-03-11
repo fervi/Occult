@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <sound>
   <extension>.ogg</extension>
-  <origname>nosound.ogg</origname>
+  <origname>sound\audio\snd_boilingblood.ogg</origname>
   <kind>3</kind>
   <volume>
     <volume>1.0</volume>
